@@ -1,9 +1,9 @@
 <!--This is where the search bar, filters, and create button live-->
 <nav class="blog-nav">
-  <a ng-click="mainCtrl.filterAs('availableItems')" id="availableItems" class="blog-nav-item" href="#">Available items</a>
-  <a ng-click="mainCtrl.filterAs('borrowedItems')" id="borrowedItems" class="blog-nav-item" href="#">My borrowed items</a>
-  <a ng-click="mainCtrl.filterAs('leantItems')" id="leantItems" class="blog-nav-item" href="#">My lent items</a>
-  <a ng-click="mainCtrl.filterAs('listedItems')" id="listedItems" class="blog-nav-item" href="#">My listed items</a>
+  <a ng-click="mainCtrl.filterAs('availableItems'); mainCtrl.toggleForm(false)" id="availableItems" class="blog-nav-item" href="#">Available items</a>
+  <a ng-click="mainCtrl.filterAs('borrowedItems'); mainCtrl.toggleForm(false)" id="borrowedItems" class="blog-nav-item" href="#">My borrowed items</a>
+  <a ng-click="mainCtrl.filterAs('leantItems'); mainCtrl.toggleForm(false)" id="leantItems" class="blog-nav-item" href="#">My lent items</a>
+  <a ng-click="mainCtrl.filterAs('listedItems'); mainCtrl.toggleForm(false)" id="listedItems" class="blog-nav-item" href="#">My listed items</a>
   <a ng-click="mainCtrl.toggleForm(true); mainCtrl.loadMapCoor()" id="addItem" class="blog-nav-item" data-toggle="collapse" data-target="#form" href="#">+ Add an item</a>
   <div class="search">
     <div class="form-group">
