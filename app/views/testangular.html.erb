@@ -18,7 +18,7 @@
     <form ng-controller="ItemController as itemCtrl" ng-submit="itemCtrl.addItem()" ng-show="mainCtrl.formStatus" id="form" class="collapse">
       <div class="add-post">
         <div ng-click="mainCtrl.toggleForm(false)" class="close" data-toggle="collapse" data-target="#form">&#10005;</div>
-          <div class="form-group">
+          <div class="form-group form-add">
             <input ng-model="itemCtrl.newItemTitle" type="text" class="form-control" required maxlength="70" placeholder="Item name"><br/>
             <textarea ng-model="itemCtrl.newItemDescription" class="form-control" rows="3" required maxlength="1000" placeholder="Item description"></textarea><br/>
             <div id="map"></div>
@@ -69,15 +69,15 @@
               </td>
             </tr>
           </table>
-    			<div ng-repeat = "comment in item.comments" ><span class="sender">{{comment.username}}</span><span> </span><span>{{comment.comment}}</span>
-    			<small class="time">{{comment.created_at}}</small>
+    			<div ng-repeat = "comment in item.comments" ><span class="lender">{{comment.username}}</span><span class="comment">&nbsp;{{comment.comment}}</span><br>
+    			<div class="time">{{comment.created_at | date: 'medium'}}</div>
           </div>
           <hr>
         </div>
   		</div>
   	</section>
 
-  	<!--my leant items -->
+  	<!--my lent items -->
   	<section ng-repeat="item in itemCtrl.itemList | filter:searchText" ng-show="mainCtrl.filter === 'leantItems'">
   		<div ng-show="item.borrower_id && item.user_id === mainCtrl.currentUser.user_id">
   			<p class="title">{{item.title}}</p>
@@ -98,8 +98,8 @@
               </td>
             </tr>
           </table>
-    			<div ng-repeat = "comment in item.comments" ><span class="sender">{{comment.username}}</span><span> </span><span>{{comment.comment}}</span>
-    			<small class="time">{{comment.created_at}}</small>
+    			<div ng-repeat = "comment in item.comments" ><span class="borrower">{{comment.username}}</span><span class="comment">&nbsp;{{comment.comment}}</span><br>
+          <div class="time">{{comment.created_at | date: 'medium'}}</div>
           </div>
           <hr>
         </div>
@@ -113,13 +113,12 @@
         <p class="title">{{item.title}}</p>
         <p class="description">{{item.description}}</p>
         <div class="button">
-          <button ng-click="itemCtrl.showEditForm(item.id)" class="btn btn-small edit" >Edit</button>
+          <button ng-click="itemCtrl.showEditForm(item.id)" class="btn btn-small" style="padding: 6px 22px 7px 22px;">Edit</button>
           <button ng-click="itemCtrl.deleteItem(item)" class="btn btn-small">Delete</button>
         </div>
-        <br>
-        <form ng-submit="itemCtrl.editItem(item)" ng-show="itemCtrl.editFormStatus === item.id" >
+        <form ng-submit="itemCtrl.editItem(item)" ng-show="itemCtrl.editFormStatus === item.id" class="editform">
           <div class="add-post">
-            <div class="form-group">
+            <div class="form-group form-add">
               <input ng-model="item.title" type="text" class="form-control" required maxlength="70"><br>
               <textarea ng-model="item.description" class="form-control" rows="3" required maxlength="1000"></textarea>
               <div class="button"><br>
